@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Patient Testimonials</h2>
+
+<div class="row">
+
+{% for t in testimonials %}
+
+<div class="col-md-4">
+
+<div class="card mb-3">
+
+<img src="{{t.photo.url}}" class="card-img-top">
+
+<div class="card-body">
+
+<h5>{{t.patient_name}}</h5>
+
+<p>{{t.review}}</p>
+
+<p>⭐ {{t.rating}} / 5</p>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
