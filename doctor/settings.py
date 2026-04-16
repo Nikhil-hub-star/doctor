@@ -35,6 +35,8 @@ SESSION_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'jazzmin',
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,6 +135,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles' 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+  'CLOUD_NAME': os.environ.get('dkbmnwug5'),
+    'API_KEY': os.environ.get('983838237142851'),
+    'API_SECRET': os.environ.get('lpoqfO1WPGq7NTsr4r-z8XI1CDc'),
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
