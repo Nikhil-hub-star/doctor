@@ -170,6 +170,12 @@ EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 
-EMAIL_HOST_PASSWORD = 'your_app_password'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+
+# Fallback for Django's default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Ensure staticfiles storage is set for older/explicit configurations
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
