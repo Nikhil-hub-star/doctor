@@ -15,12 +15,12 @@ from pathlib import Path
 import cloudinary
 
 CLOUDINARY_STORAGE = {
-  'CLOUD_NAME': os.environ.get('dkbmnwug5'),
-    'API_KEY': os.environ.get('983838237142851'),
-    'API_SECRET': os.environ.get('lpoqfO1WPGq7NTsr4r-z8XI1CDc'),
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET'),
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -148,8 +148,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles' 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 
