@@ -20,6 +20,12 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('API_SECRET'),
 }
 
+cloudinary.config(
+    cloud_name=os.getenv("CLOUD_NAME"),
+    api_key=os.getenv("API_KEY"),
+    api_secret=os.getenv("API_SECRET"),
+    secure=True
+)
 
 
 
@@ -105,7 +111,7 @@ DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3',
         conn_max_age=600,
-        ssl_require=not DEBUG
+        
     )
 }
 
@@ -178,4 +184,3 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Ensure staticfiles storage is set for older/explicit configurations
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
